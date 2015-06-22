@@ -5,9 +5,14 @@ exports.question = function(req, res) {
 
 // GET /quizes/answer
 exports.answer = function(req, res) {
-if (req.query.respuesta === 'Roma'){
-	res.render('quizes/answer', {respuesta: 'Correcto',title: 'Respuesta'});
-} else {
-	res.render('quizes/answer', {respuesta: 'Incorrecto. La respuesta era "Roma"',title: 'Respuesta'});
-}
+	if (req.query.respuesta === 'Roma'){
+		res.render('quizes/answer', {respuesta: 'Correcto',title: 'Respuesta'});
+	} else {
+		res.render('quizes/answer', {respuesta: 'Incorrecto. La respuesta era "Roma"',title: 'Respuesta'});
+	}
+};
+
+// GET /author
+exports.author = function(req, res) {
+	res.render("author", {title: "Créditos"});
 };
