@@ -1,4 +1,5 @@
 # Archivos omitidos
 node_modules
 npm-debug.log
+quiz.sqlite
 .directory
