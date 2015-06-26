@@ -30,12 +30,27 @@ exports.index = function(req, res) {
 // 	models.Quiz.findAll().then(function(quizes) {
 // 		res.render('quizes/index.ejs', { quizes: quizes});
 // 	})
-	
-  models.Quiz.findAll().then(
-    function(quizes) {
-      res.render('quizes/index', { quizes: quizes});
-    }
-  ).catch(function(error) { next(error);})
+	if (!req.query.search) {
+		models.Quiz.findAll().then(
+				function(quizes) {
+					var busqueda = 'Buscar pregunta';
+					res.render('quizes/index', { quizes: quizes, busqueda: busqueda});
+				}
+			).catch(function(error) { next(error);})
+	} else {
+    // delimitar el string contenido en search con el comodín % antes y después cambie también
+    // los espacios en blanco por %. De esta forma, si busca "uno dos" ("%uno%dos%"),
+    // mostrará todas las preguntas que tengan "uno" seguido de "dos", independientemente
+    // de lo que haya entre "uno" y "dos".
+    models.Quiz.findAll(
+      {
+        where: [ "lower(pregunta) like lower(?)", "%" + req.query.search.split(" ").join("%") + "%" ]
+      }).then( function(quizes) {
+		var busqueda = req.query.search;
+        res.render( 'quizes/index', { quizes: quizes.sort(), busqueda: busqueda});
+      }
+    ).catch(function(error) {next(error);})
+	}
 
 };
 
