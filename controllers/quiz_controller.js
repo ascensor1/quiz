@@ -98,7 +98,7 @@ exports.author = function(req, res) {
 // GET /quizes/new
 exports.new = function(req, res) {
   var quiz = models.Quiz.build(
-    {pregunta: "Pregunta", respuesta: "Respuesta"}
+    {pregunta: "Pregunta", respuesta: "Respuesta", tema: "Otro"}
   );
 
   res.render('quizes/new', {quiz: quiz, errors: []});
@@ -184,6 +184,7 @@ exports.update = function(req, res) {
 	var errors = quiz.validate();//ya qe el objeto errors no tiene then
 	req.quiz.pregunta  = req.body.quiz.pregunta;
 	req.quiz.respuesta = req.body.quiz.respuesta;
+	req.quiz.tema = req.body.quiz.tema;
 
 	if (errors) {
 		var i=0; var errores=new Array();//se convierte en [] con la propiedad message por compatibilida con layout
@@ -191,7 +192,7 @@ exports.update = function(req, res) {
 		res.render('quizes/edit', {quiz: req.quiz, errors: errores});
 	} else {
 			// save: guarda campos pregunta y respuesta en DB
-		req.quiz.save( {fields: ["pregunta", "respuesta"]}).then(function(){ 
+		req.quiz.save( {fields: ["pregunta", "respuesta", "tema"]}).then(function(){ 
 			res.redirect('/quizes');
 		}).catch(function(error){next(error)});
 	}  
