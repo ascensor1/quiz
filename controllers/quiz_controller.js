@@ -36,7 +36,7 @@ exports.index = function(req, res) {
 					var busqueda = 'Buscar pregunta';
 					res.render('quizes/index.ejs', { quizes: quizes, busqueda: busqueda, errors: []});
 				}
-			).catch(function(error) { next(error)})
+			).catch(function(error){next(error)})
 	} else {
     // delimitar el string contenido en search con el comodín % antes y después cambie también
     // los espacios en blanco por %. De esta forma, si busca "uno dos" ("%uno%dos%"),
@@ -49,7 +49,7 @@ exports.index = function(req, res) {
 		var busqueda = req.query.search;
         res.render( 'quizes/index', { quizes: quizes.sort(), busqueda: busqueda, errors: []});
       }
-    ).catch(function(error) {next(error);})
+    ).catch(function(error){next(error)})
 	}
 
 };
@@ -141,7 +141,7 @@ exports.create = function(req, res){
 		// save: guarda en DB campos pregunta y respuesta de quiz
 		quiz.save({fields: ["pregunta", "respuesta"]}).then(function(){ 
 			res.redirect('/quizes');
-		});
+		}).catch(function(error){next(error)});
 	}
 };
 
@@ -193,6 +193,15 @@ exports.update = function(req, res) {
 			// save: guarda campos pregunta y respuesta en DB
 		req.quiz.save( {fields: ["pregunta", "respuesta"]}).then(function(){ 
 			res.redirect('/quizes');
-		});
+		}).catch(function(error){next(error)});
 	}  
 };
+
+// DELETE /quizes/:id
+exports.destroy = function(req, res) {
+  req.quiz.destroy().then( function() {
+    res.redirect('/quizes');
+  }).catch(function(error){next(error)});
+};
+
+
