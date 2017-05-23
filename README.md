@@ -22,6 +22,8 @@
 	<li><a href="https://vigea.es/en/web/tratamiento/rinomodelacion">Rinomodelaci&oacute;n en Almer&iacute;a</a></li>
 	<li><a href="https://vigea.es/en/web/tratamiento/relleno-de-labios">Aumento de labios en Almer&iacute;a</a></li>
 	<li>Intraloterapia con <a href="https://vigea.es/en/web/tratamiento/aqualyx">Aqualyx en Almer&iacute;a</a></li>
+	<li><a href="https://vigea.es/es/web/tratamiento/microinjertos-bioregenerativos-en-granada-y-almeria">Regenera activa en Almería</a>.</li>
+	<li><a href="https://vigea.es/es/web/tratamiento/microinjertos-bioregenerativos-en-granada-y-almeria">Tratamiento capilar con células madre en Almería</a>.</li>
 </ul>
 
 <p>Todo el conjunto de t&eacute;cnicas faciales y corporales est&aacute;n abaladas por la experiencia y el buen hacer de la Dra. Olivia Gea Romero, m&eacute;dico especialista en <a href="http://doctoragea.es/">Geriatr&iacute;a en Almer&iacute;a</a>. Con ella todo el conjunto de nuestros servicios apuntan a la plena expresi&oacute;n del concepto de Medicina Antiaging.</p>
